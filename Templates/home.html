@@ -1,0 +1,30 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta content="">
+        <title>Spotify Search</title>
+    </head>
+
+    <link href="{% static 'styles.css' %}" rel="stylesheet">
+
+    <body>
+        <h2>
+            <a href="{% url 'home' %}">
+                Spotify Search
+            </a>
+        </h2>
+        <nav>
+            Search By:
+            <a href="{% url 'search-by-artist' %}">Artist</a>
+            <a href="{% url 'search-by-album' %}">Album</a>
+            <a href="{% url 'search-by-track' %}">Track</a>
+        </nav>
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ artist_search }}
+        <input type="submit" value="Search">
+    </form>
+    <ul id="list-items">
+        {% for artist in artist_results %}
+        <li>
+            <a href="{% url 'artist' slug=artist.artistid %}">
+                {{ artist.artistname }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,77 @@
+
+body{
+    background-color: black;
+    color: white;
+    font-size: 1.75em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+input{
+    background-color: inherit;
+    color: inherit;
+    border: none;
+    outline: none;
+}
+
+input[type=text]{
+    border-bottom: 1px solid white;
+}
+
+input[type=submit]{
+    cursor: pointer;
+}
+
+main{
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: 45vw 45vw;
+    width: 90vw
+}
+
+nav{
+    display: inherit;
+    flex-flow: row;
+    justify-content: space-around;
+    width: 84vw
+}
+
+img{
+    width: 300px
+}
+
+form{
+    width: 40vw;
+}
+
+a{
+    color: white;
+}
+
+a:hover{
+    color: #1db954
+}
+
+#info, #list-items{
+    width: 40vw
+}
+/*
+#results{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+div{
+    display: flex;
+    flex-flow: column;
+    align-items: left
+}
+*/

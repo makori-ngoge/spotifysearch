@@ -1,0 +1,40 @@
+{% extends 'home.html' %}
+
+<!--
+    <img src="https://i.kym-cdn.com/photos/images/facebook/001/569/898/26c.jpg"
+    alt="You did it. You crazy son of a bitch, you did it">
+-->
+
+{% block content %}
+    <div id="info">
+        <img src="{{ artist.image }}">
+        <br>
+        {{ artist.artistname }}
+        <br>
+        Followers:{{ artist.followers }}
+    </div>
+    <div id="list-items">
+        Albums:
+        <ul>
+            {% for album in artist.artistalbums %}
+            <li>
+                <a href="{% url 'album' slug=album.albumid %}">
+                    {{ album.albumname }}
+                </a>
+            </li>
+            {% empty %}
+            No Albums
+            {% endfor %}
+        </ul>
+        Top Tracks:
+        <ol>
+            {% for track in artist.toptracks %}
+            <li>
+                <a href="{% url 'track' slug=track.trackid %}">
+                    {{ track.trackname }}
+                </a>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+{% endblock %}

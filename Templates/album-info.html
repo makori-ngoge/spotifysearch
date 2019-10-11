@@ -1,0 +1,25 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <div id="info">
+        <img src="{{ album.image }}">
+        <br>
+        {{ album.albumname }}
+        <br>
+        Album Artist: <a href="{% url 'artist' slug=album.artist.artistid %}">
+            {{ album.artist.artistname}}
+        </a>
+    </div>
+    <div id="list-items">
+        Tracks:
+        <ol>
+            {% for track in album.tracklist %}
+            <li>
+                <a href="{% url 'track' slug=track.trackid %}">
+                    {{ track.trackname }}
+                </a>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ track_search }}
+        <input type="submit" value="Search">
+    </form>
+    <ul id="list-items">
+        {% for track in track_results %}
+        <li>
+            <a href="{% url 'track' slug=track.trackid %}">
+                {{ track.trackname }} by {{ track.artist.artistname }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
