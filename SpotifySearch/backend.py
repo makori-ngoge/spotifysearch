@@ -1,22 +1,9 @@
 import json
 import spotipy
-import webbrowser
-import spotipy.util as util
-from json.decoder import JSONDecodeError
 from spotipy.oauth2 import SpotifyClientCredentials
-from django.urls import reverse, resolve
-from urllib.parse import quote
-
-# from slugify import slugify
-# import os
-# import sys
-
 
 SPOTIPY_CLIENT_ID='026c94177ab648e6af67c8653323dbe0'
 SPOTIPY_CLIENT_SECRET="12f56f869d22422dbf4de353168e66b3"
-SPOTIPY_REDIRECT_URI="http://localhost/"
-
-# "https://github.com/makori-ngoge"
 
 query = spotipy.Spotify(
     client_credentials_manager=SpotifyClientCredentials(
@@ -66,6 +53,7 @@ class TrackObject:
             count += 1
         return featuredartist
 
+
 class AlbumObject:
     def __init__(self, albumid):
         self.albumname = query.album(albumid)["name"]
@@ -83,6 +71,7 @@ class AlbumObject:
         for x in results["items"]:
             tracks.append(TrackObject(x["id"]))
         return tracks
+
 
 class ArtistObject:
     def __init__(self, artistid):
@@ -107,8 +96,6 @@ class ArtistObject:
     def image(self):
         return query.artist(self.artistid)["images"][0]["url"]
 
-    # (self.artistname)         
-    #reverse("ArtistSearch:artist", kwargs={"slug": self.artistname})
 
 def artistsearch(artistname):
     results = query.search(artistname, limit=20, type="artist")
@@ -122,7 +109,6 @@ def albumsearch(albumname):
     albums_list = []
     for x in results["albums"]["items"]:
         albums_list.append(AlbumObject(x["id"]))
-    # print(json.dumps(results, sort_keys=True, indent=2))
     return albums_list
 
 def tracksearch(trackname):
@@ -132,4 +118,4 @@ def tracksearch(trackname):
         tracks.append(TrackObject(x["id"]))
     return tracks
 
-# print(json.dumps(VARIALBLE, sort_keys=True, indent=4))
+# print(json.dumps(VARIALBLE, sort_keys=True, indent=2))

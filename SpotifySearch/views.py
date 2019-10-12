@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from . import forms
 from . import backend
-from urllib.parse import unquote
 
 def home(request):
     return render(request, "home.html")
